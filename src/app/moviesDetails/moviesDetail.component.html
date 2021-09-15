@@ -1,28 +1,70 @@
 <div class="main-content">
-    <div class="container-fluid">
+    <div class="row">
+        <div class="col-12 film-header">
+            <div class="goback" (click)="goBack()"><i class="bi bi-chevron-left"></i> <div class="goback-text"><span>Supra</span> Ciné</div></div>
+        </div>   
+    </div>
+    <div class="container">
+        
+        <div *ngIf="data">
         <div class="row">
-            <div class="col-md-12">
-                <div class="card card-plein">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title mt-0">Liste des films</h4>
-                      
+
+           
+ 
+    
+   
+  
+        
+         <div class="col-4 film"> 
+                <div *ngIf="data.Poster !== 'N/A'">
+                    <img src="{{data.Poster}}" alt="">
+                </div>
+                <div *ngIf="data.Poster === 'N/A'">
+                    <img src="assets/empty.png" alt="">
+                </div>
+
+                <div *ngIf="data.Ratings" class="film-scores">
+                    <div class="film-subtitles">Score IMBD</div>
+                    <i class="bi bi-star-fill"></i>
+                  
+                        <div class="film-rating">{{data.Ratings[0].Value}}</div>
+                        <div class="film-subtitles">Infos</div>
+                        <div class="film-infos">Released : {{data.Released}}</div>
+                        <div class="film-infos">Genre : {{data.Genre}}</div>
+                        <div class="film-infos">Runtime : {{data.Runtime}}</div>
+
                    
-                                        <ul>
-                                        
-                                            <li>{{ dataSource.Title }}</li>
-                                            <li>{{ dataSource.Year }}</li>
-                                        
-                                            <li><a class="btn-new" routerLink="/detail/1" >Editer</a></li>
-                                       
-                                          
-                                        </ul>
+                    
+                </div>
+        </div>               
+   
+
+        <div class="col-8">
+            <div class="film-desc">
+                <h1 class="film-title mt-0" *ngIf="data.Title !== 'N/A'">{{ data.Title }}</h1>
+                <div class="film-year" *ngIf="data.Year !== 'N/A'">{{ data.Year }}</div>
+                <a class="film-favorites"><i class="bi bi-star"></i>Ajouter aux favoris</a>
+                <div class="film-blockEnd"><div class="film-subtitles">Synopsis</div>
+                <div class="film-plot" *ngIf="data.Plot !== 'N/A'">{{ data.Plot }}</div>
+                <div class="film-subtitles">Acteurs</div>
+                <div *ngIf="data.Actors">
+                    <div film-actors>{{data.Actors}}</div>
+                </div>
+              
+            </div>
+            </div>
+        </div>  
+    </div>  
+
+                
+        
                                 
                            
                       
-                    </div>
+                   
                   
-                </div>
-            </div>
+               
+           
         </div>
     </div>
 </div>

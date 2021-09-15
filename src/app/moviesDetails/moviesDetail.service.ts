@@ -4,6 +4,7 @@ import { Observable, of, throwError} from 'rxjs';
 import { catchError} from 'rxjs/operators';
 // interface
 import { IntMoviesDetail} from './moviesDetail.interface';
+import { IntMovies } from '../movies/movies.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -20,19 +21,11 @@ export class MoviesService {
   };
 
 
-  getMoviesList(): Observable<IntMoviesDetail> {
-    const applicantsUrl = `http://localhost:3000/applicants`;
-    return this.http.get<IntMoviesDetail>(applicantsUrl)
+  getMovie(imdbID: string): Observable<IntMovies> {
+    const moviesURL = `http://www.omdbapi.com/?apikey=4eacbfee&i=${imdbID}&plot=full`;
+    return this.http.get<IntMovies>(moviesURL)
     .pipe(
-      catchError(this.handleError<IntMoviesDetail>('applicants'))
-    );
-  }
-
-  getMovie(id: number): Observable<IntMoviesDetail> {
-    const applicantsUrl = `http://localhost:3000/applicants/${id}`;
-    return this.http.get<IntMoviesDetail>(applicantsUrl)
-    .pipe(
-      catchError(this.handleError<IntMoviesDetail>('applicants'))
+      catchError(this.handleError<IntMovies>('movies'))
     );
   }
 
@@ -41,20 +34,6 @@ export class MoviesService {
       console.error(error); // log to console instead
       return of(result as T);
     };
-  }
-
-  private handleErrors(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
-      console.error('An error occurred:', error.error.message);
-    } else {
-      // The response body may contain clues as to what went wrong.
-      console.error(
-        `Backend returned code ${error.status}, ` +
-        `body was: ${error.error}`);
-    }
-    // Return an observable with a user-facing error message.
-    return throwError(
-      'Something bad happened; please try again later.');
   }
 
 }

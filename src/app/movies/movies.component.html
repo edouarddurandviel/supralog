@@ -1,23 +1,59 @@
 <div class="main-content">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="card card-plein">
-                    <div class="card-header card-header-danger">
-                        <h4 class="card-title mt-0">Liste des films</h4>
-                      
-                   
-                                        <ul>
-                                            <li>
-                                                <a routerLink="/detail/{{dataSource.Title}}" class="btn-new"><img src="{{dataSource.Poster}}" alt=""></a>
-                                                <div>{{dataSource.Title}}</div>
-                                                <div>{{dataSource.Year}}</div>
-                                            </li>
-                                          
-                                        </ul>
+                <form id="search-component" class="row" (ngSubmit)="update();" [formGroup]="searchForm">
+                    <div class="col-md-3">
+                        <label for="search-title">Title</label>
+                        <input type="text" class="form-control" id="search-title" autocomplete="off" formControlName="Title" required>
+                        <!-- <div *ngIf="Title.invalid && Title.dirty" class="alert alert-danger">
+                            Title obligatoire !
+                        </div> -->
                     </div>
-                  
-                </div>
+                    <div class="col-md-3">
+                        <label for="search-year">Year</label>
+                        <input type="text" class="form-control" id="search-year" autocomplete="off" formControlName="Year" required/>
+                        <!-- <div *ngIf="Year.invalid && Year.dirty" class="alert alert-danger">
+                            Year obligatoire !
+                        </div> -->
+                    </div>
+                    <div class="col-md-3">
+                        <label for="search-type">Type</label>
+                        <input type="text" class="form-control" id="search-type" autocomplete="off" formControlName="Type" required>
+                        <!-- <div *ngIf="Type.invalid && Type.dirty" class="alert alert-danger">
+                            Type obligatoire !
+                        </div> -->
+                    </div>
+                    <div class="col-md-3">
+                        <div class="submit">
+                             <!-- [disabled]="searchForm.invalid"  -->
+                        <button class="btn clear" (click)="clear()">Effacer</button>
+                        <button class="btn btn-success">Rechercher</button>
+                        </div>
+                       
+                      
+                    </div>  
+                  </form>
+
+            </div>
+        </div>
+
+        <div class="error" *ngIf="dataSource.Response === 'False'">
+            Aucun résultat disponible
+        </div>
+        <div class="result" *ngIf="dataSource.Response === 'True'">
+            <div class="row">
+                <div class="col-md-12">
+                        <div class="col-md-3 item">
+                            <div class="item-cont" *ngIf='dataSource.Poster === "N/A"'><img class="item-cont-img" src="assets/empty.png" alt=""></div>
+                            <div class="item-cont" *ngIf='dataSource.Poster !== "N/A"'><img class="item-cont-img" src="{{dataSource.Poster}}" alt=""></div>
+                            
+                            <a class="item-desc" routerLink="/detail/{{dataSource.imdbID}}" [state]="dataSource">
+                                <div class="item-title" *ngIf='dataSource.Title'>{{dataSource.Title}}</div>
+                                <div class="item-year" *ngIf='dataSource.Year'>{{dataSource.Year}}</div>
+                            </a>    
+                        </div>  
+                    </div>
             </div>
         </div>
     </div>

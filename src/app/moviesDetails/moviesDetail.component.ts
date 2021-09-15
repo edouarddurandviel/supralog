@@ -1,38 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import {  ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { IntMovies } from '../movies/movies.interface';
 import { MoviesService } from './moviesDetail.service';
-import { IntMoviesDetail } from './moviesDetail.interface';
-import {  Router } from '@angular/router';
 
 
 @Component({
-  selector: 'app-applicants',
+  selector: 'app-detail',
   templateUrl: './moviesDetail.component.html',
   styleUrls: ['./moviesDetail.component.scss']
 })
 export class MoviesDetailComponent implements OnInit {
 
-  dataSource!: IntMoviesDetail;
+  state$: Observable<IntMovies>;
 
   constructor(
-    private service: MoviesService,
     private router: Router,
+    private service: MoviesService,
+    public activatedRoute: ActivatedRoute
     ) {
     
      }
 
     submitted = false;
+    data: IntMovies;
   
     ngOnInit(): void {
-        this.service.getMoviesList().subscribe(
-          dataSource => this.dataSource = dataSource
-          );
+      this.service.getMovie(this.activatedRoute.snapshot.paramMap.get('imdbID')!).subscribe((data) => this.data = data);
+     
     }
   
-
-
-addNew() {
-  this.router.navigate(['/applicants/add']);
-}
+    goBack() {
+      this.router.navigate(['/']);
+    }
 
 
 }

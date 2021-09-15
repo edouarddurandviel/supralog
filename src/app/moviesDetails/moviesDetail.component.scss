@@ -8,3 +8,127 @@
     float: right;
 }
 
+html, body, .main-content{
+    background: #2d2d2d !important;
+    background-color: #2d2d2d !important;
+    height: 100%;
+}
+.main-content{
+    padding-bottom: 100px;
+}
+.bi{
+    display: inline-grid;
+    &:before{
+       
+        margin-right: 10px;
+        padding: 5px 0;
+    }
+}
+
+.goback{
+    display: block;
+    float: left;
+    color: #fff;
+    font-size: 60px;
+    cursor: pointer;
+    &-text{
+        float: left;
+        margin-left: 30px;
+        font-size: 30px;
+        line-height: 70px;
+        font-family: 'Nunito', sans-serif;
+    }
+
+
+    span{
+        font-weight: 600;
+    }
+
+}
+
+.bi-chevron-left{
+    float: left;
+}
+
+.bi-star-fill{
+    color: rgb(255, 217, 0);
+    font-size: 70px;
+    float: left;
+}
+
+.film{
+    &-header{
+        width: 100%;
+        height: 100px;
+        display: block;
+        clear: both;
+    }
+    &-title{
+        font-family: 'Nunito', sans-serif;
+        color: #fff;
+        font-size: 50px;
+        font-weight: 800;
+    }
+    &-year{
+        font-family: 'Nunito', sans-serif;
+        color: #fff;
+        font-size: 30px;
+    }
+    &-favorites{
+        display: flex;
+        height: 50px;
+        margin-top: 15px;
+        width: fit-content;
+        padding: 10px 30px;
+        border-radius: 25px;
+        color: #fff;
+        font-family: 'Nunito', sans-serif;
+        line-height: 32px;
+        font-size: 20px;
+        text-align: center;
+        font-weight: 300;
+        text-decoration: none;
+        background-color: #ff9100;
+        box-shadow: 3px 7px 17px 4px #00000052;
+    }
+    &-desc{
+        padding-left: 40px;
+        color: #fff;
+        font-weight: 300;
+        font-family: 'Nunito', sans-serif;
+    }
+    &-subtitles{
+        margin: 25px 0 10px 0;
+        float: left;
+        width: 100%;
+        color: #fff;
+        font-family: 'Nunito', sans-serif;
+        line-height: 30px;
+        font-size: 22px;
+        font-weight: 700;
+  
+    }
+    &-blockEnd{
+        margin-top: 40px;
+    }
+    &-scores{
+        margin-top: 50px;
+    }
+    &-rating{
+        display: inline-flex;
+        float: left;
+        height: 70px;
+        padding-left: 20px;
+        font-size: 22px;
+        font-family: 'Nunito';
+        color: #fff;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    &-infos{
+        float: left;
+        color: #fff;
+        margin: 2px 0;
+    }
+}
+

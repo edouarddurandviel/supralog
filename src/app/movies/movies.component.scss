@@ -1,3 +1,4 @@
+
 .btn-new{
     background-color: white !important;
     color: #f44336 !important;
@@ -6,5 +7,80 @@
     border: none !important;
     border-radius: 3px;
     float: right;
+}
+
+html, body, .main-content{
+    background: #2d2d2d !important;
+    background-color: #2d2d2d !important;
+    height: 100%;
+}
+.main-content{
+    padding-bottom: 100px;
+    min-height: 1000px;
+}
+
+.result{
+    margin-top: 50px;
+}
+
+.error{
+    color: #fff;
+    margin: 20px 0;
+}
+
+.clear{
+    background-color: orange;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.submit{
+    margin-top: 1.5rem;
+}
+
+.item{
+    background-color: grey;
+    min-height: 300px;
+    z-index: 0;
+    position: relative;
+
+    &-cont{
+        width: 100%;
+        min-height: 300px;
+        &-img{
+            position: relative;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    }
+
+    &-desc{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 300px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        text-decoration: none;
+        color: #fff;
+    }
+    &-title{
+        margin-top: 80%;
+        font-family: 'Nunito', sans-serif;
+        color: #fff;
+        font-size: 30px;
+        font-weight: 400;
+    }
+    &-year{
+        font-family: 'Nunito', sans-serif;
+        font-size: 20px;
+        color: #fff;
+        padding: 0px;
+    }
 }
 
