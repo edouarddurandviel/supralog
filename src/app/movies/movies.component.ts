@@ -3,7 +3,6 @@ import { MoviesService } from './movies.service';
 import { IntMovies } from './movies.interface';
 import {  Router, ActivatedRoute} from '@angular/router';
 import { FormBuilder, Validators} from '@angular/forms';
-import { ThisReceiver } from '@angular/compiler';
 
 
 
@@ -60,7 +59,7 @@ export class MoviesComponent implements OnInit {
     this.service.searchMovie('hero', '2020', 'movie')
     .subscribe( (dataSource) => this.dataSource = dataSource);
 
-    this.service.getMoviesList().subscribe((dataSource) => this.dataSource = dataSource);
+    //this.service.getMoviesList().subscribe((dataSource) => this.dataSource = dataSource);
     }
 
     clear(){
